@@ -8,11 +8,11 @@
 
 <!-- Badges -->
 <p align="center">
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/AccioINTERN/AccioINTERN">
-  <img alt="GitHub issues" src="https://img.shields.io/github/issues/AccioINTERN/AccioINTERN">
-  <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/AccioINTERN/AccioINTERN">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/AccioINTERN/AccioINTERN">
-  <img alt="GitHub license" src="https://img.shields.io/github/license/AccioINTERN/AccioINTERN">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/acciointern.github.io/AccioINTERN">
+  <img alt="GitHub issues" src="https://img.shields.io/github/issues/acciointern.github.io/AccioINTERN">
+  <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/acciointern.github.io/AccioINTERN">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/acciointern.github.io/AccioINTERN">
+  <img alt="GitHub license" src="https://img.shields.io/github/license/acciointern.github.io/AccioINTERN">
 </p>
 
 
@@ -40,8 +40,8 @@ To get started with AccioINTERN, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/AccioINTERN/AccioINTERN.git
-   cd AccioINTERN
+   git clone https://github.com/AccioINTERN/acciointern.github.io.git
+   cd acciointern.github.io
 
 2. **Configure GitHub Actions**:
    - Edit `.github/workflows/invite.yml` with your organization name and setup secrets for `GITHUB_TOKEN`.
