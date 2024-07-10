@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join AccioINTERN</title>
+</head>
+<body>
+    <h1>Join Our Organization</h1>
+    <form id="joinForm">
+        <label for="username">GitHub Username:</label>
+        <input type="text" id="username" name="username" required>
+        <button type="submit">Join Organization</button>
+    </form>
+    <p id="response"></p>
+
+    <script>
+        document.getElementById('joinForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const response = await fetch('/api/join', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username }),
+            });
+            
+            const result = await response.json();
+            document.getElementById('response').textContent = result.message;
+        });
+    </script>
+</body>
+</html>
