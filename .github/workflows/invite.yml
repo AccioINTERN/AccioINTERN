@@ -20,17 +20,17 @@ jobs:
         id: fetch_user_id
         run: |
           USERNAME="${{ steps.payload.outputs.username }}"
-          USER_ID=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/users/$USERNAME" | jq -r .id)
+          USER_ID=$(curl -s -H "Authorization: token ${{ secrets.GT_TOKEN }}" "https://api.github.com/users/$USERNAME" | jq -r .id)
           echo "::set-output name=user_id::$USER_ID"
 
       - name: Send Invitation
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GT_TOKEN }}
           GITHUB_ORG: AccioINTERN
         run: |
           USER_ID=${{ steps.fetch_user_id.outputs.user_id }}
           curl -X POST \
-            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Authorization: token $GT_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/orgs/$GITHUB_ORG/invitations \
+            https://api.github.com/orgs/$GT_ORG/invitations \
             -d '{"invitee_id": '"$USER_ID"'}'
