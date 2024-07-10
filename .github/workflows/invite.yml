@@ -1,0 +1,27 @@
+name: Invite to AccioINTERN Organization
+
+on:
+  workflow_dispatch:
+  # You can customize triggers based on your needs
+
+jobs:
+  invite:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Extract Username
+        id: extract_username
+        run: echo "::set-output name=username::${{ github.event.inputs.username }}"
+        
+      - name: Send Invitation
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ORG: your_organization_name
+        run: |
+          USERNAME=${{ steps.extract_username.outputs.username }}
+          echo "Sending invitation to $USERNAME"
+          curl -X POST \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/orgs/$GITHUB_ORG/invitations \
+            -d '{"invitee_id":"'$USERNAME'"}'
