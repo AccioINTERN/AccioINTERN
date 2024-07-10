@@ -1,27 +1,36 @@
 name: Invite to AccioINTERN Organization
 
 on:
-  workflow_dispatch:
   repository_dispatch:
-    types: [join-request]
+    types: [invite]
 
 jobs:
   invite:
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout Repository
+      - name: Check out repository
         uses: actions/checkout@v2
+
+      - name: Get client payload
+        id: payload
+        run: echo "::set-output name=username::${{ github.event.client_payload.username }}"
+
+      - name: Fetch user ID
+        id: fetch_user_id
+        run: |
+          USERNAME="${{ steps.payload.outputs.username }}"
+          USER_ID=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/users/$USERNAME" | jq -r .id)
+          echo "::set-output name=user_id::$USER_ID"
 
       - name: Send Invitation
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_ORG: AccioINTERN
         run: |
-          USERNAME=${{ github.event.client_payload.username }}
-          echo "Sending invitation to $USERNAME"
+          USER_ID=${{ steps.fetch_user_id.outputs.user_id }}
           curl -X POST \
             -H "Authorization: token $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
             https://api.github.com/orgs/$GITHUB_ORG/invitations \
-            -d '{"invitee_id":"'$USERNAME'"}'
+            -d '{"invitee_id": '"$USER_ID"'}'
