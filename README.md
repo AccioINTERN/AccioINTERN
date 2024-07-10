@@ -8,12 +8,13 @@
 
 <!-- Badges -->
 <p align="center">
-  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/acciointern.github.io/AccioINTERN">
-  <img alt="GitHub issues" src="https://img.shields.io/github/issues/acciointern.github.io/AccioINTERN">
-  <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/acciointern.github.io/AccioINTERN">
-  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/acciointern.github.io/AccioINTERN">
-  <img alt="GitHub license" src="https://img.shields.io/github/license/acciointern.github.io/AccioINTERN">
+  <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/AccioINTERN/acciointern.github.io">
+  <img alt="GitHub issues" src="https://img.shields.io/github/issues/AccioINTERN/acciointern.github.io">
+  <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/AccioINTERN/acciointern.github.io">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/AccioINTERN/acciointern.github.io">
+  <img alt="GitHub license" src="https://img.shields.io/github/license/AccioINTERN/acciointern.github.io">
 </p>
+
 
 
 <!-- Table of Contents -->
