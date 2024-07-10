@@ -2,23 +2,23 @@ name: Invite to AccioINTERN Organization
 
 on:
   workflow_dispatch:
-  # You can customize triggers based on your needs
+  repository_dispatch:
+    types: [join-request]
 
 jobs:
   invite:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Extract Username
-        id: extract_username
-        run: echo "::set-output name=username::${{ github.event.inputs.username }}"
-        
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
       - name: Send Invitation
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_ORG: AccioINTERN
         run: |
-          USERNAME=${{ steps.extract_username.outputs.username }}
+          USERNAME=${{ github.event.client_payload.username }}
           echo "Sending invitation to $USERNAME"
           curl -X POST \
             -H "Authorization: token $GITHUB_TOKEN" \
