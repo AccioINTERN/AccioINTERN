@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Join AcciozINTERN</title>
+    <title>Join AccioINTERN</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -16,7 +16,6 @@
             margin: 0;
             text-align: center;
         }
-
         .container {
             background-color: #ffffff;
             padding: 40px;
@@ -25,25 +24,21 @@
             max-width: 400px;
             width: 100%;
         }
-
         h1 {
             font-size: 24px;
             margin-bottom: 20px;
             color: #000;
         }
-
         form {
             display: flex;
             flex-direction: column;
         }
-
         label {
             font-weight: bold;
             margin-bottom: 8px;
             color: #000;
             text-align: left;
         }
-
         input[type="text"] {
             padding: 10px;
             font-size: 16px;
@@ -52,7 +47,6 @@
             margin-bottom: 20px;
             box-sizing: border-box;
         }
-
         button[type="submit"] {
             padding: 12px;
             background-color: #000;
@@ -63,24 +57,20 @@
             font-size: 16px;
             transition: background-color 0.3s ease;
         }
-
         button[type="submit"]:hover {
             background-color: #333;
         }
-
         #response {
             text-align: center;
             font-size: 16px;
             color: #333;
             margin-top: 15px;
         }
-
         a {
             color: #000;
             text-decoration: none;
             font-weight: bold;
         }
-
         a:hover {
             text-decoration: underline;
         }
@@ -88,28 +78,32 @@
 </head>
 <body>
     <div class="container">
-        <h1>Join AcciozINTERN</h1>
+        <h1>Join AccioINTERN</h1>
         <form id="joinForm">
             <label for="username">GitHub Username:</label>
             <input type="text" id="username" name="username" required>
-            <button type="submit">Get Invitaion</button>
+            <button type="submit">Get Invitation</button>
         </form>
         <p id="response"></p>
     </div>
-
     <script>
         document.getElementById('joinForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            
             const username = document.getElementById('username').value;
-            const response = await fetch('/api/join', {
+            const response = await fetch('https://api.github.com/repos/AccioINTERN/AccioINTERN/dispatches', {
                 method: 'POST',
                 headers: {
+                    'Authorization': `token YOUR_GITHUB_TOKEN`,
+                    'Accept': 'application/vnd.github.everest-preview+json',
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username }),
+                body: JSON.stringify({
+                    event_type: 'invite',
+                    client_payload: {
+                        username: username
+                    }
+                }),
             });
-            
             const result = await response.json();
             document.getElementById('response').textContent = result.message;
         });
