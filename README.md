@@ -11,7 +11,10 @@
   <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/AccioINTERN/AccioINTERN">
   <img alt="GitHub issues" src="https://img.shields.io/github/issues/AccioINTERN/AccioINTERN">
   <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/AccioINTERN/AccioINTERN">
+  <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/AccioINTERN/AccioINTERN">
+  <img alt="GitHub license" src="https://img.shields.io/github/license/AccioINTERN/AccioINTERN">
 </p>
+
 
 <!-- Table of Contents -->
 ## Table of Contents
@@ -39,3 +42,27 @@ To get started with AccioINTERN, follow these steps:
    ```bash
    git clone https://github.com/AccioINTERN/AccioINTERN.git
    cd AccioINTERN
+
+2. **Configure GitHub Actions**:
+   - Edit `.github/workflows/invite.yml` with your organization name and setup secrets for `GITHUB_TOKEN`.
+
+3. **Deploy Serverless Function**:
+   - Deploy `api/join.js` to handle GitHub invitation requests.
+
+4. **Host the Static Website**:
+   - Host `index.html` on GitHub Pages or any web hosting service.
+
+5. **Customize**:
+   - Customize the UI and functionality based on your organization's needs.
+
+<!-- Contributing -->
+## Contributing
+Contributions are welcome! Please follow these guidelines:
+- Fork the repository and create your branch (`git checkout -b feature/your-feature`).
+- Commit your changes (`git commit -am 'Add some feature'`).
+- Push to the branch (`git push origin feature/your-feature`).
+- Create a new Pull Request.
+
+<!-- License -->
+## License
+This project is licensed under the [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) License - see the [LICENSE](LICENSE) file for details.
